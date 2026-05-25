@@ -25,7 +25,7 @@ class Phpass
     private
 
     def gensalt(input)
-      out = '$P$'
+      out = +'$P$'
       out << @itoa64[[@stretch + 5, 30].min]
       out << encode64(input, 6)
       out
@@ -48,7 +48,7 @@ class Phpass
     end
 
     def encode64(input, count)
-      out = ''
+      out = +''
       cur = 0
       while cur < count
         value = input[cur].ord
@@ -77,7 +77,7 @@ class Phpass
     end
 
     def force_encoding(s)
-      s.force_encoding('BINARY')
+      s.dup.force_encoding('BINARY')
     end
   end
 end
